@@ -60,3 +60,12 @@ final double area = shape
 	.ifCase(Shape.POINT,     ()              -> 0)
 	.orElseThrow();
 ```
+
+## Limitations
+
+While this library gives a reasonable approximation of sum types, some limitations are worth noting.
+
+- The associated values are anonymous. This can make things confusing. In the example above, you don't know whether `Shape.RECTANGLE`'s associated values are `(width, height)` or `(height, width)`. Javadoc on the case constants helps a bit, but the best strategy is to use custom wrappers for your values, and give them meaningful names.
+- There is no way for the compiler to check that you have covered all cases. (This is also true for plain Java `enum`s, but most IDEs offer some help for those.)
+- The maximum number of associated values per case is nine (`Case0` ~ `Case9`). It would be possible to create more, but I have to draw the line somewhere, and keeping it single-digit helps with IDE code completion.
+- Java's compiler errors can be confusing when you get the number or type of associated values wrong. When in doubt, check the declaration of the case constant.
