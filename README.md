@@ -21,8 +21,8 @@ This project aims to provide:
 public final class Shape extends Sum<Shape>
 {
 	public static final Case0<Shape>                 POINT     = Shape::new;
-	public static final Case1<Shape, Double>         CIRCLE    = Shape::new;
 	public static final Case2<Shape, Double, Double> RECTANGLE = Shape::new;
+	public static final Case1<Shape, Double>         CIRCLE    = Shape::new;
 	
 	private Shape(final Case<Shape> c, final Object[] vals) { super(c, vals); }
 }
