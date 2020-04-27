@@ -69,3 +69,4 @@ While this library gives a reasonable approximation of sum types, some limitatio
 - There is no way for the compiler to check that you have covered all cases. (This is also true for plain Java `enum`s, but most IDEs offer some help for those.)
 - The maximum number of associated values per case is nine (`Case0` ~ `Case9`). It would be possible to create more, but I have to draw the line somewhere, and keeping it single-digit helps with IDE code completion.
 - Java's compiler errors can be confusing when you get the number or type of associated values wrong. When in doubt, check the declaration of the case constant.
+- The `toString()` output of cases is gibberish.
