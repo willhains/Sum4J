@@ -45,20 +45,20 @@ shape.ifCase(Shape.CIRCLE, radius -> graphics.drawCircle(radius));
 If you need to return a value:
 
 ```java
-final double area = shape
-	.ifCase(Shape.RECTANGLE, (width, height) -> width * height)
-	.ifCase(Shape.CIRCLE,    (radius)        -> Math.PI * radius * radius)
-	.orElse(0);
+final double area1 = shape
+    .mapCase(Shape.RECTANGLE, (width, height) -> width * height)
+    .mapCase(Shape.CIRCLE,    (radius)        -> Math.PI * radius * radius)
+    .orElse(0.0);
 ```
 
 To ensure all cases are covered:
 
 ```java
-final double area = shape
-	.ifCase(Shape.RECTANGLE, (width, height) -> width * height)
-	.ifCase(Shape.CIRCLE,    (radius)        -> Math.PI * radius * radius)
-	.ifCase(Shape.POINT,     ()              -> 0)
-	.orElseThrow();
+final double area2 = shape
+    .mapCase(Shape.POINT,     ()              -> 0.0)
+    .mapCase(Shape.CIRCLE,    (radius)        -> Math.PI * radius * radius)
+    .mapCase(Shape.RECTANGLE, (width, height) -> width * height)
+    .orElseThrow();
 ```
 
 ## Limitations
@@ -69,4 +69,4 @@ While this library gives a reasonable approximation of sum types, some limitatio
 - There is no way for the compiler to check that you have covered all cases. (This is also true for plain Java `enum`s, but most IDEs offer some help for those.)
 - The maximum number of associated values per case is nine (`Case0` ~ `Case9`). It would be possible to create more, but I have to draw the line somewhere, and keeping it single-digit helps with IDE code completion.
 - Java's compiler errors can be confusing when you get the number or type of associated values wrong. When in doubt, check the declaration of the case constant.
-- The `toString()` output of cases is gibberish.
+- The `toString()` implementation uses reflection to get the name of the case.
