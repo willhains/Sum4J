@@ -1,3 +1,18 @@
+[![GitHub Release][release-badge]][release] 
+[![Build Status][build-badge]][build]
+[![codecov][coverage-badge]][coverage]
+[![Follow @willhains][twitter-badge]][twitter] 
+
+[release-badge]:  https://img.shields.io/github/release/willhains/sum4j.svg
+[build-badge]:    https://travis-ci.org/willhains/sum4j.svg?branch=master
+[coverage-badge]: https://codecov.io/gh/willhains/sum4j/branch/master/graph/badge.svg
+[twitter-badge]:  https://img.shields.io/twitter/follow/willhains.svg?style=social
+
+[release]:  https://github.com/willhains/sum4j/releases
+[build]:    https://travis-ci.org/willhains/sum4j
+[coverage]: https://codecov.io/gh/willhains/sum4j
+[twitter]:  https://twitter.com/intent/follow?screen_name=willhains
+
 # Sum Types for Java
 
 This little library makes it easy to create and use sum types (a.k.a. [tagged unions][wiki]) in Java 8+, similar to Swift’s [enums with associated values][swift].
